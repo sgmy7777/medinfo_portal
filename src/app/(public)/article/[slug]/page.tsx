@@ -104,7 +104,8 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
         .ap-nav a:hover { color: var(--acc); border-bottom-color: var(--acc); }
         .ap-cats { background: var(--bord); border-bottom: 1px solid var(--bord-d); overflow-x: auto; scrollbar-width: none; }
         .ap-cats::-webkit-scrollbar { display: none; }
-        .ap-cats-in { max-width: 1200px; margin: 0 auto; padding: 0 8px; display: flex; justify-content: flex-start; flex-wrap: nowrap; }
+        .ap-cats-in { max-width: 1200px; margin: 0 auto; padding: 0 24px; display: flex; justify-content: center; flex-wrap: wrap; }
+        @media (max-width: 768px) { .ap-cats-in { padding: 0 8px; justify-content: flex-start; flex-wrap: nowrap; overflow-x: auto; } }
         .ap-cat-lnk { padding: 9px 14px; font-size: 11px; font-weight: 600; letter-spacing: 0.07em; text-transform: uppercase; color: rgba(255,255,255,0.65); text-decoration: none; white-space: nowrap; transition: all 0.15s; display: flex; align-items: center; gap: 5px; border-right: 1px solid rgba(255,255,255,0.08); border-bottom: 2px solid transparent; }
         .ap-cat-lnk:hover { color: white; background: rgba(0,0,0,0.15); border-bottom-color: var(--acc); }
 

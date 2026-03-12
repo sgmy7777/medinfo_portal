@@ -102,7 +102,8 @@ export default async function HomePage({ searchParams }: { searchParams: Promise
         /* ── CAT BAR ── */
         .zh-cats { background: var(--bord); border-bottom: 1px solid var(--bord-d); overflow-x: auto; scrollbar-width: none; }
         .zh-cats::-webkit-scrollbar { display: none; }
-        .zh-cats-in { max-width: 1200px; margin: 0 auto; padding: 0 8px; display: flex; justify-content: flex-start; flex-wrap: nowrap; }
+        .zh-cats-in { max-width: 1200px; margin: 0 auto; padding: 0 24px; display: flex; justify-content: center; flex-wrap: wrap; }
+        @media (max-width: 768px) { .zh-cats-in { padding: 0 8px; justify-content: flex-start; flex-wrap: nowrap; overflow-x: auto; } }
         .zh-cat-lnk { padding: 9px 15px; font-size: 11px; font-weight: 600; letter-spacing: 0.07em; text-transform: uppercase; color: rgba(255,255,255,0.65); text-decoration: none; white-space: nowrap; transition: all 0.15s; display: flex; align-items: center; gap: 5px; border-right: 1px solid rgba(255,255,255,0.08); border-bottom: 2px solid transparent; }
         .zh-cat-lnk:hover { color: white; background: rgba(0,0,0,0.15); border-bottom-color: var(--acc); }
         .zh-cat-cnt { font-size: 9px; opacity: 0.5; font-weight: 400; }
@@ -132,10 +133,10 @@ export default async function HomePage({ searchParams }: { searchParams: Promise
 
         /* side numbered list */
         .zh-side-list { border-left: 1px solid var(--rule); padding-left: 28px; display: flex; flex-direction: column; }
-        .zh-side-item { padding: 16px 0; border-bottom: 1px solid var(--rule); text-decoration: none; display: block; transition: opacity 0.2s; }
-        .zh-side-item:first-child { padding-top: 0; }
-        .zh-side-item:last-child { border-bottom: none; padding-bottom: 0; }
+        .zh-side-item { padding: 16px 0; border-bottom: 1px solid var(--rule); text-decoration: none; display: grid; grid-template-columns: 36px 1fr; gap: 0 10px; align-items: start; transition: opacity 0.2s; }
+        .zh-side-item:last-child { border-bottom: none; }
         .zh-side-item:hover { opacity: 0.65; }
+        .zh-side-body { display: flex; flex-direction: column; gap: 3px; min-width: 0; }
         .zh-side-num { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 900; color: var(--paper-dd); line-height: 1; margin-bottom: 5px; }
         .zh-side-cat { font-size: 10px; font-weight: 700; letter-spacing: 0.13em; text-transform: uppercase; color: var(--bord); margin-bottom: 4px; }
         .zh-side-ttl { font-family: 'Playfair Display', serif; font-size: 15px; font-weight: 700; color: var(--ink); line-height: 1.3; margin-bottom: 5px; }
@@ -210,14 +211,32 @@ export default async function HomePage({ searchParams }: { searchParams: Promise
           .zh-hero-grid { grid-template-columns: 1fr; }
           .zh-grid { grid-template-columns: repeat(2, 1fr); }
           .zh-specs-grid { grid-template-columns: repeat(2, 1fr); }
-          .zh-trust-top { grid-template-columns: 1fr; }
-          .zh-trust-stat { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.08); }
+          .zh-trust-top { grid-template-columns: repeat(3, 1fr); }
           .zh-trust-feats { grid-template-columns: 1fr; }
           .zh-side-list { display: none; }
+          .zh-trust { padding: 32px 0; }
+          .zh-trust-stat { padding: 16px 10px; }
+          .zh-trust-num { font-size: 28px; }
+          .zh-trust-lbl { font-size: 10px; }
+          .zh-trust-top { margin-bottom: 24px; }
+          .zh-trust-feats { gap: 12px; }
+          .zh-trust-feat-tx { display: none; }
         }
         @media (max-width: 600px) {
           .zh-wrap { padding: 0 14px; }
-          .zh-grid { grid-template-columns: 1fr; }
+          .zh-hero-grid { grid-template-columns: 1fr; gap: 0; }
+          .zh-hero-img { max-height: 220px; }
+          .zh-side-list { display: flex; border-left: none; padding-left: 0; border-top: 1px solid var(--rule); margin-top: 4px; }
+          .zh-side-item { display: grid; grid-template-columns: auto 1fr; gap: 0 10px; padding: 14px 0; }
+          .zh-side-body { display: flex; flex-direction: column; gap: 3px; min-width: 0; }
+        .zh-side-num { font-size: 18px; }
+          .zh-side-ttl { font-size: 14px; }
+          .zh-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; margin-bottom: 28px; }
+          .zh-card { padding-top: 10px; }
+          .zh-card-img { margin-bottom: 8px; }
+          .zh-card-ttl { font-size: 13px; margin-bottom: 4px; -webkit-line-clamp: 3; display: -webkit-box; -webkit-box-orient: vertical; overflow: hidden; }
+          .zh-card-exc { display: none; }
+          .zh-card-meta { font-size: 10px; }
           .zh-nav { display: none; }
           .zh-specs-grid { grid-template-columns: 1fr 1fr; gap: 6px; }
           .zh-hero-ttl { font-size: 22px; }
@@ -228,10 +247,17 @@ export default async function HomePage({ searchParams }: { searchParams: Promise
           .zh-hero-img { max-height: 240px; }
           .zh-hero-exc { display: none; }
           .zh-cat-lnk { padding: 8px 10px; font-size: 10px; }
-          .zh-trust-num { font-size: 32px; }
-          .zh-trust-feat { padding: 16px; }
+          .zh-trust { padding: 24px 0; }
+          .zh-trust-in { padding: 0 14px; }
+          .zh-trust-top { margin-bottom: 16px; }
+          .zh-trust-stat { padding: 12px 6px; }
+          .zh-trust-num { font-size: 22px; margin-bottom: 3px; }
+          .zh-trust-lbl { font-size: 9px; letter-spacing: 0; }
+          .zh-trust-feat { padding: 0 0 0 10px; }
+          .zh-trust-feat-ttl { font-size: 12px; }
+          .zh-trust-feat-tx { display: none; }
+          .zh-trust-feats { gap: 10px; }
           .zh-sec-ttl { font-size: 17px; }
-          .zh-card-exc { display: none; }
           .zh-pagination { gap: 4px; }
           .zh-page-btn { min-width: 34px; height: 34px; font-size: 12px; padding: 0 8px; }
           .zh-foot-top { flex-direction: column; gap: 16px; }
@@ -239,7 +265,6 @@ export default async function HomePage({ searchParams }: { searchParams: Promise
           .zh-foot-btm { flex-direction: column; gap: 4px; text-align: center; }
           .zh-foot-desc { max-width: 100%; }
           .zh-hdr-main { padding: 14px 16px 12px; }
-          .zh-trust-in { padding: 0 14px; }
           .zh-spec { padding: 10px 12px; }
           .zh-spec-name { font-size: 12px; }
           .zh-sec-hdr { margin-bottom: 16px; }
@@ -306,9 +331,11 @@ export default async function HomePage({ searchParams }: { searchParams: Promise
                       {rest.slice(0, 5).map((a: any, i: number) => (
                         <Link key={a.id} href={`/article/${a.slug}`} className="zh-side-item">
                           <div className="zh-side-num">0{i + 2}</div>
-                          {a.category && <div className="zh-side-cat">{a.category.title}</div>}
-                          <div className="zh-side-ttl">{a.title}</div>
-                          <div className="zh-side-dt">{formatDate(a.publishedAt)}</div>
+                          <div className="zh-side-body">
+                            {a.category && <div className="zh-side-cat">{a.category.title}</div>}
+                            <div className="zh-side-ttl">{a.title}</div>
+                            <div className="zh-side-dt">{formatDate(a.publishedAt)}</div>
+                          </div>
                         </Link>
                       ))}
                     </div>
@@ -394,7 +421,7 @@ export default async function HomePage({ searchParams }: { searchParams: Promise
               </div>
               <div className="zh-trust-stat">
                 <div className="zh-trust-num">100%</div>
-                <div className="zh-trust-lbl">Проверенная информация</div>
+                <div className="zh-trust-lbl">Проверено врачами</div>
               </div>
               <div className="zh-trust-stat">
                 <div className="zh-trust-num">0</div>
@@ -403,7 +430,7 @@ export default async function HomePage({ searchParams }: { searchParams: Promise
             </div>
             <div className="zh-trust-feats">
               {[
-                { t: 'Компетентные авторы', tx: 'Все материалы написаны и проверены специалистами' },
+                { t: 'Авторы — практикующие врачи', tx: 'Все материалы написаны и проверены специалистами с подтверждёнными дипломами' },
                 { t: 'Клинические стандарты', tx: 'Статьи основаны на актуальных медицинских протоколах и рекомендациях ВОЗ' },
                 { t: 'Регулярные обновления', tx: 'Контент обновляется при появлении новых данных и исследований' },
               ].map(item => (
