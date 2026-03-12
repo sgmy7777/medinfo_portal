@@ -9,7 +9,11 @@
     "lint": "next lint",
     "db:push": "prisma db push",
     "db:seed": "ts-node --compiler-options '{\"module\":\"CommonJS\"}' prisma/seed.ts",
-    "db:studio": "prisma studio"
+    "db:studio": "prisma studio",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "db:seed:articles": "ts-node --compiler-options '{\"module\":\"CommonJS\"}' prisma/seed-articles.ts"
   },
   "dependencies": {
     "@prisma/client": "^6.6.0",
@@ -40,9 +44,13 @@
   },
   "devDependencies": {
     "@types/bcryptjs": "^2.4.6",
+    "@types/jest": "^30.0.0",
     "@types/node": "^20.14.0",
     "@types/react": "^19.0.0",
+    "jest": "^30.3.0",
+    "jest-environment-node": "^30.3.0",
     "prisma": "^6.6.0",
+    "ts-jest": "^29.4.6",
     "ts-node": "^10.9.2",
     "typescript": "^5.4.0"
   }
