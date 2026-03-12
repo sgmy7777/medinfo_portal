@@ -10,7 +10,7 @@ import { Separator } from '@/components/ui/separator'
 import {
   FileText, Eye, TrendingUp, PenSquare,
   Plus, Search, ExternalLink, LogOut,
-  Pencil, Trash2, Stethoscope
+  Pencil, Trash2, Stethoscope, Activity
 } from 'lucide-react'
 
 interface Article {
@@ -103,6 +103,15 @@ export default function AdminDashboard() {
             >
               <FileText className="h-4 w-4" />
               Статьи
+            </Link>
+          </nav>
+          <nav className="px-3 py-1 pb-2">
+            <Link
+              href="/admin/symptoms"
+              className="flex items-center gap-3 rounded-md px-3 py-2 text-sm font-medium text-muted-foreground hover:bg-accent hover:text-accent-foreground transition-colors"
+            >
+              <Activity className="h-4 w-4" />
+              Симптомы
             </Link>
           </nav>
 

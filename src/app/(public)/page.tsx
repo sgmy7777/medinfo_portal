@@ -88,6 +88,8 @@ export default async function HomePage({ searchParams }: { searchParams: Promise
         .zh { background: var(--bord-d); }
         .zh-top { border-bottom: 1px solid rgba(255,255,255,0.07); padding: 6px 0; }
         .zh-top-in { max-width: 1200px; margin: 0 auto; padding: 0 24px; display: flex; justify-content: space-between; align-items: center; }
+        .zh-symptoms-nav-lnk { font-size: 11px; color: rgba(255,255,255,0.55); text-decoration: none; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 600; transition: color 0.15s; }
+        .zh-symptoms-nav-lnk:hover { color: var(--acc); }
         .zh-top-badge { font-size: 10px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--acc); }
         .zh-top-date { font-size: 11px; color: rgba(255,255,255,0.3); font-style: italic; }
         .zh-main { max-width: 1200px; margin: 0 auto; padding: 20px 24px 16px; display: flex; align-items: center; justify-content: center; }
@@ -203,6 +205,14 @@ export default async function HomePage({ searchParams }: { searchParams: Promise
         .zh-foot-btm { display: flex; justify-content: space-between; font-size: 11px; color: rgba(255,255,255,0.45); flex-wrap: wrap; gap: 6px; }
 
         .zh-empty { text-align: center; padding: 80px 0; }
+        .zh-symptoms-promo { background: linear-gradient(135deg, var(--bord-d) 0%, var(--bord) 100%); border-radius: 2px; padding: 28px 32px; margin-bottom: 40px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+        .zh-symptoms-promo-left { flex: 1; }
+        .zh-symptoms-promo-ico { font-size: 32px; margin-bottom: 8px; }
+        .zh-symptoms-promo-ttl { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700; color: white; margin-bottom: 6px; }
+        .zh-symptoms-promo-sub { font-size: 13px; color: rgba(255,255,255,0.65); line-height: 1.6; }
+        .zh-symptoms-promo-btn { background: var(--acc); color: white; padding: 12px 24px; border-radius: 2px; text-decoration: none; font-size: 13px; font-weight: 700; letter-spacing: 0.06em; white-space: nowrap; transition: background 0.15s; }
+        .zh-symptoms-promo-btn:hover { background: #A8712A; }
+        @media (max-width: 600px) { .zh-symptoms-promo { flex-direction: column; align-items: flex-start; padding: 20px; } }
         .zh-empty-ico { font-size: 56px; margin-bottom: 16px; opacity: 0.3; }
         .zh-empty-txt { font-family: 'Playfair Display', serif; font-size: 20px; color: var(--ink-60); }
 
@@ -277,6 +287,7 @@ export default async function HomePage({ searchParams }: { searchParams: Promise
           <div className="zh-top">
             <div className="zh-top-in">
               <span className="zh-top-badge">Медицинский информационный портал</span>
+              <Link href="/symptoms" className="zh-symptoms-nav-lnk">🌡️ Симптомы</Link>
               <span className="zh-top-date">{todayStr}</span>
             </div>
           </div>
@@ -348,6 +359,15 @@ export default async function HomePage({ searchParams }: { searchParams: Promise
                 <div className="zh-empty-txt">Статьи скоро появятся</div>
               </div>
             )}
+
+            <div className="zh-symptoms-promo">
+              <div className="zh-symptoms-promo-left">
+                <div className="zh-symptoms-promo-ico">🌡️</div>
+                <div className="zh-symptoms-promo-ttl">Справочник симптомов</div>
+                <div className="zh-symptoms-promo-sub">Найдите свой симптом и узнайте возможные причины — головная боль, одышка, усталость и многое другое</div>
+              </div>
+              <Link href="/symptoms" className="zh-symptoms-promo-btn">Перейти к симптомам →</Link>
+            </div>
 
             {categories.length > 0 && (
               <section className="zh-specs-wrap">
