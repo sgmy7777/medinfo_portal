@@ -62,6 +62,7 @@ export default async function HomePage({ searchParams }: { searchParams: Promise
         @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Golos+Text:wght@400;500;600&display=swap');
 
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html, body { overflow-x: hidden; max-width: 100%; }
 
         :root {
           --bord: #6B1F2A;
@@ -101,7 +102,7 @@ export default async function HomePage({ searchParams }: { searchParams: Promise
         /* ── CAT BAR ── */
         .zh-cats { background: var(--bord); border-bottom: 1px solid var(--bord-d); overflow-x: auto; scrollbar-width: none; }
         .zh-cats::-webkit-scrollbar { display: none; }
-        .zh-cats-in { max-width: 1200px; margin: 0 auto; padding: 0 24px; display: flex; justify-content: center; flex-wrap: wrap; }
+        .zh-cats-in { max-width: 1200px; margin: 0 auto; padding: 0 8px; display: flex; justify-content: flex-start; flex-wrap: nowrap; }
         .zh-cat-lnk { padding: 9px 15px; font-size: 11px; font-weight: 600; letter-spacing: 0.07em; text-transform: uppercase; color: rgba(255,255,255,0.65); text-decoration: none; white-space: nowrap; transition: all 0.15s; display: flex; align-items: center; gap: 5px; border-right: 1px solid rgba(255,255,255,0.08); border-bottom: 2px solid transparent; }
         .zh-cat-lnk:hover { color: white; background: rgba(0,0,0,0.15); border-bottom-color: var(--acc); }
         .zh-cat-cnt { font-size: 9px; opacity: 0.5; font-weight: 400; }
@@ -191,14 +192,14 @@ export default async function HomePage({ searchParams }: { searchParams: Promise
         /* ── FOOTER ── */
         .zh-footer { background: var(--ink); color: rgba(255,255,255,0.65); padding: 36px 0 20px; }
         .zh-foot-in { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
-        .zh-foot-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 32px; padding-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,0.06); margin-bottom: 16px; }
+        .zh-foot-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 24px; padding-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,0.06); margin-bottom: 16px; flex-wrap: wrap; }
         .zh-foot-logo { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 900; color: white; text-decoration: none; }
         .zh-foot-logo span { color: var(--acc); }
         .zh-foot-desc { font-size: 11px; color: rgba(255,255,255,0.55); margin-top: 5px; max-width: 280px; line-height: 1.7; }
         .zh-foot-lnks { display: flex; gap: 20px; font-size: 12px; padding-top: 2px; }
         .zh-foot-lnks a { color: rgba(255,255,255,0.65); text-decoration: none; transition: color 0.15s; }
         .zh-foot-lnks a:hover { color: var(--acc); }
-        .zh-foot-btm { display: flex; justify-content: space-between; font-size: 11px; color: rgba(255,255,255,0.45); }
+        .zh-foot-btm { display: flex; justify-content: space-between; font-size: 11px; color: rgba(255,255,255,0.45); flex-wrap: wrap; gap: 6px; }
 
         .zh-empty { text-align: center; padding: 80px 0; }
         .zh-empty-ico { font-size: 56px; margin-bottom: 16px; opacity: 0.3; }
@@ -212,13 +213,36 @@ export default async function HomePage({ searchParams }: { searchParams: Promise
           .zh-trust-top { grid-template-columns: 1fr; }
           .zh-trust-stat { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.08); }
           .zh-trust-feats { grid-template-columns: 1fr; }
+          .zh-side-list { display: none; }
         }
         @media (max-width: 600px) {
+          .zh-wrap { padding: 0 14px; }
           .zh-grid { grid-template-columns: 1fr; }
           .zh-nav { display: none; }
-          .zh-specs-grid { grid-template-columns: 1fr; }
-          .zh-hero-ttl { font-size: 24px; }
-          .zh-logo-text { font-size: 30px; }
+          .zh-specs-grid { grid-template-columns: 1fr 1fr; gap: 6px; }
+          .zh-hero-ttl { font-size: 22px; }
+          .zh-logo-text { font-size: 28px; }
+          .zh-logo-sub { display: none; }
+          .zh-top-date { display: none; }
+          .zh-top-in { justify-content: center; }
+          .zh-hero-img { max-height: 240px; }
+          .zh-hero-exc { display: none; }
+          .zh-cat-lnk { padding: 8px 10px; font-size: 10px; }
+          .zh-trust-num { font-size: 32px; }
+          .zh-trust-feat { padding: 16px; }
+          .zh-sec-ttl { font-size: 17px; }
+          .zh-card-exc { display: none; }
+          .zh-pagination { gap: 4px; }
+          .zh-page-btn { min-width: 34px; height: 34px; font-size: 12px; padding: 0 8px; }
+          .zh-foot-top { flex-direction: column; gap: 16px; }
+          .zh-foot-lnks { flex-wrap: wrap; gap: 12px; }
+          .zh-foot-btm { flex-direction: column; gap: 4px; text-align: center; }
+          .zh-foot-desc { max-width: 100%; }
+          .zh-hdr-main { padding: 14px 16px 12px; }
+          .zh-trust-in { padding: 0 14px; }
+          .zh-spec { padding: 10px 12px; }
+          .zh-spec-name { font-size: 12px; }
+          .zh-sec-hdr { margin-bottom: 16px; }
         }
       `}</style>
 
@@ -370,7 +394,7 @@ export default async function HomePage({ searchParams }: { searchParams: Promise
               </div>
               <div className="zh-trust-stat">
                 <div className="zh-trust-num">100%</div>
-                <div className="zh-trust-lbl">Проверено врачами</div>
+                <div className="zh-trust-lbl">Проверенная информация</div>
               </div>
               <div className="zh-trust-stat">
                 <div className="zh-trust-num">0</div>
@@ -379,7 +403,7 @@ export default async function HomePage({ searchParams }: { searchParams: Promise
             </div>
             <div className="zh-trust-feats">
               {[
-                { t: 'Авторы — практикующие врачи', tx: 'Все материалы написаны и проверены специалистами с подтверждёнными дипломами' },
+                { t: 'Компетентные авторы', tx: 'Все материалы написаны и проверены специалистами' },
                 { t: 'Клинические стандарты', tx: 'Статьи основаны на актуальных медицинских протоколах и рекомендациях ВОЗ' },
                 { t: 'Регулярные обновления', tx: 'Контент обновляется при появлении новых данных и исследований' },
               ].map(item => (

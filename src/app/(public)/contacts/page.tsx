@@ -34,6 +34,7 @@ export default function ContactsPage() {
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Golos+Text:wght@400;500;600&display=swap');
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html, body { overflow-x: hidden; max-width: 100%; }
         :root {
           --bord: #6B1F2A; --bord-d: #4A0F17; --bord-l: #F5EBE8; --bord-m: #8B2D3A;
           --paper: #F7F2EA; --paper-d: #EDE5D8;
@@ -109,6 +110,13 @@ export default function ContactsPage() {
           .ct-layout { grid-template-columns: 1fr; gap: 40px; }
           .ct-title { font-size: 28px; }
           .ct-logo { font-size: 30px; }
+        }
+        @media (max-width: 600px) {
+          .ct-wrap { padding: 32px 16px 48px; }
+          .ct-title { font-size: 24px; }
+          .ct-logo { font-size: 26px; }
+          .ct-logo-sub { display: none; }
+          .ct-subtitle { font-size: 14px; }
         }
       `}</style>
 

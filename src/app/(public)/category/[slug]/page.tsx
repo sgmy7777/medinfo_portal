@@ -81,7 +81,8 @@ export default async function CategoryPage({ params }: { params: Promise<{ slug:
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Golos+Text:wght@400;500;600&display=swap');
 
-        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        *, *::before, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html, body { overflow-x: hidden; max-width: 100%; }
 
         :root {
           --bord: #6B1F2A; --bord-d: #4A0F17; --bord-l: #F5EBE8; --bord-m: #8B2D3A;
@@ -105,7 +106,7 @@ export default async function CategoryPage({ params }: { params: Promise<{ slug:
         /* CAT BAR */
         .cp-cats { background: var(--bord); border-bottom: 1px solid var(--bord-d); overflow-x: auto; scrollbar-width: none; }
         .cp-cats::-webkit-scrollbar { display: none; }
-        .cp-cats-in { max-width: 1200px; margin: 0 auto; padding: 0 24px; display: flex; justify-content: center; flex-wrap: wrap; }
+        .cp-cats-in { max-width: 1200px; margin: 0 auto; padding: 0 8px; display: flex; justify-content: flex-start; flex-wrap: nowrap; }
         .cp-cat-lnk { padding: 9px 14px; font-size: 11px; font-weight: 600; letter-spacing: 0.07em; text-transform: uppercase; color: rgba(255,255,255,0.65); text-decoration: none; white-space: nowrap; transition: all 0.15s; border-right: 1px solid rgba(255,255,255,0.08); border-bottom: 2px solid transparent; }
         .cp-cat-lnk:hover, .cp-cat-lnk.active { color: white; background: rgba(0,0,0,0.15); border-bottom-color: var(--acc); }
 
@@ -205,8 +206,21 @@ export default async function CategoryPage({ params }: { params: Promise<{ slug:
           .cp-hero-ttl { font-size: 32px; }
         }
         @media (max-width: 600px) {
-          .cp-art-item { grid-template-columns: 100px 1fr; gap: 14px; }
-          .cp-logo { font-size: 30px; }
+          .cp-wrap { padding: 0 16px; }
+          .cp-art-item { grid-template-columns: 96px 1fr; gap: 12px; }
+          .cp-logo { font-size: 28px; }
+          .cp-logo-sub { display: none; }
+          .cp-hdr-main { padding: 14px 16px 12px; }
+          .cp-cat-lnk { padding: 8px 10px; font-size: 10px; }
+          .cp-hero { padding: 28px 0; }
+          .cp-hero-ttl { font-size: 24px; }
+          .cp-hero-ico { font-size: 44px; }
+          .cp-hero-desc { font-size: 13px; }
+          .cp-art-ttl { font-size: 20px; }
+          .cp-item-ttl { font-size: 14px; }
+          .cp-item-exc { display: none; }
+          .cp-sec-ttl { font-size: 17px; }
+          .cp-feat-body { padding-top: 4px; }
         }
       `}</style>
 

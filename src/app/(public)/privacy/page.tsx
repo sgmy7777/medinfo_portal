@@ -25,6 +25,7 @@ export default async function PrivacyPage() {
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Golos+Text:wght@400;500;600&display=swap');
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html, body { overflow-x: hidden; max-width: 100%; }
         :root {
           --bord: #6B1F2A; --bord-d: #4A0F17; --bord-l: #F5EBE8;
           --paper: #F7F2EA; --paper-d: #EDE5D8;
@@ -75,7 +76,14 @@ export default async function PrivacyPage() {
         .pv-foot-lnks a:hover { color: var(--acc); }
         .pv-foot-copy { font-size: 11px; color: rgba(255,255,255,0.45); }
 
-        @media (max-width: 600px) { .pv-title { font-size: 26px; } .pv-logo { font-size: 30px; } }
+        @media (max-width: 600px) {
+          .pv-wrap { padding: 28px 16px 48px; }
+          .pv-title { font-size: 22px; }
+          .pv-logo { font-size: 26px; }
+          .pv-logo-sub { display: none; }
+          .pv-body { font-size: 14px; }
+          .pv-body h2 { font-size: 18px; }
+        }
       `}</style>
 
       <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>

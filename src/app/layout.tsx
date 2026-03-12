@@ -1,6 +1,7 @@
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 import { Playfair_Display, PT_Serif, PT_Sans } from 'next/font/google'
 import './globals.css'
+import CookieBanner from '@/components/public/CookieBanner'
 
 const playfair = Playfair_Display({
   subsets: ['latin', 'cyrillic'],
@@ -22,6 +23,11 @@ const ptSans = PT_Sans({
   display: 'swap',
 })
 
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+}
+
 export const metadata: Metadata = {
   title: 'ЗдравИнфо — Медицинский портал',
   description: 'Медицинский информационный портал. Статьи проверены практикующими врачами.',
@@ -30,7 +36,10 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="ru" className={`${playfair.variable} ${ptSerif.variable} ${ptSans.variable}`}>
-      <body className="font-sans antialiased">{children}</body>
+      <body className="font-sans antialiased">
+        {children}
+        <CookieBanner />
+      </body>
     </html>
   )
 }

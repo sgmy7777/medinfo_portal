@@ -70,6 +70,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
         @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Golos+Text:wght@400;500;600&display=swap');
 
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html, body { overflow-x: hidden; max-width: 100%; }
 
         :root {
           --bord: #6B1F2A;
@@ -103,7 +104,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
         .ap-nav a:hover { color: var(--acc); border-bottom-color: var(--acc); }
         .ap-cats { background: var(--bord); border-bottom: 1px solid var(--bord-d); overflow-x: auto; scrollbar-width: none; }
         .ap-cats::-webkit-scrollbar { display: none; }
-        .ap-cats-in { max-width: 1200px; margin: 0 auto; padding: 0 24px; display: flex; justify-content: center; flex-wrap: wrap; }
+        .ap-cats-in { max-width: 1200px; margin: 0 auto; padding: 0 8px; display: flex; justify-content: flex-start; flex-wrap: nowrap; }
         .ap-cat-lnk { padding: 9px 14px; font-size: 11px; font-weight: 600; letter-spacing: 0.07em; text-transform: uppercase; color: rgba(255,255,255,0.65); text-decoration: none; white-space: nowrap; transition: all 0.15s; display: flex; align-items: center; gap: 5px; border-right: 1px solid rgba(255,255,255,0.08); border-bottom: 2px solid transparent; }
         .ap-cat-lnk:hover { color: white; background: rgba(0,0,0,0.15); border-bottom-color: var(--acc); }
 
@@ -204,6 +205,28 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
           .ap-body-in { grid-template-columns: 1fr; gap: 32px; }
           .ap-title { font-size: 28px; }
           .ap-nav { display: none; }
+          .ap-side { position: static; }
+          .ap-ad-slot { min-height: 160px; }
+        }
+        @media (max-width: 600px) {
+          .ap-body-in { padding: 24px 16px 40px; }
+          .ap-title { font-size: 22px; }
+          .ap-deck { font-size: 15px; }
+          .ap-content { font-size: 15px; line-height: 1.75; }
+          .ap-content h2 { font-size: 20px; }
+          .ap-content h3 { font-size: 17px; }
+          .ap-hero-img { max-height: 220px; }
+          .ap-byline { flex-wrap: wrap; gap: 10px; }
+          .ap-byline-meta { margin-left: 0; text-align: left; }
+          .ap-hdr-main { padding: 14px 16px 12px; }
+          .ap-logo { font-size: 28px; }
+          .ap-logo-sub { display: none; }
+          .ap-cat-lnk { padding: 8px 10px; font-size: 10px; }
+          .ap-related { padding: 28px 16px 36px; }
+          .ap-related-ttl { font-size: 18px; }
+          .ap-under-ad-in { padding: 0 16px; }
+          .ap-under-ad-slot { min-height: 60px; font-size: 11px; }
+          .ap-bc { padding: 0; }
         }
       `}</style>
 
