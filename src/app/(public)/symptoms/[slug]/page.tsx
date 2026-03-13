@@ -64,6 +64,36 @@ function formatDate(d: Date | string | null | undefined) {
   return new Date(d).toLocaleDateString('ru-RU', { day: 'numeric', month: 'long', year: 'numeric' })
 }
 
+function SymptomDescription({ text }: { text: string }) {
+  // Разбиваем на секции по заголовкам (строки КАПСОМ с двоеточием)
+  const sections = text.split(/\n(?=[А-ЯA-Z][А-ЯA-Z\s«»()\/–-]+:)/u)
+  return (
+    <div className="sp-desc-block">
+      {sections.map((section, i) => {
+        const lines = section.trim().split('\n').filter(Boolean)
+        if (!lines.length) return null
+        const firstLine = lines[0]
+        const isHeader = /^[А-ЯA-Z«»][А-ЯA-Z\s«»()\/–-]+:/u.test(firstLine)
+        const header = isHeader ? firstLine : null
+        const body = isHeader ? lines.slice(1) : lines
+        return (
+          <div key={i} className="sp-desc-section">
+            {header && <div className="sp-desc-section-ttl">{header}</div>}
+            <ul className="sp-desc-list">
+              {body.map((line, j) => {
+                const isBullet = line.startsWith('•')
+                const text = isBullet ? line.substring(1).trim() : line
+                if (!isBullet) return <p key={j} style={{fontSize:14, color:'var(--ink-60)', lineHeight:1.65, marginBottom:6}}>{text}</p>
+                return <li key={j} dangerouslySetInnerHTML={{__html: text.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>').replace(/^([^—]+—)/, '<strong>$1</strong>')}} />
+              })}
+            </ul>
+          </div>
+        )
+      })}
+    </div>
+  )
+}
+
 export default async function SymptomPage({ params }: Props) {
   const { slug } = await params
   const { symptom, categories, allSymptoms } = await getData(slug)
@@ -118,7 +148,16 @@ export default async function SymptomPage({ params }: Props) {
         .sp-hero-in { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 280px; gap: 48px; align-items: start; }
         .sp-sys-badge { display: inline-flex; align-items: center; gap: 6px; font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--bord); margin-bottom: 14px; }
         .sp-title { font-family: 'Playfair Display', serif; font-size: 40px; font-weight: 900; color: var(--ink); line-height: 1.15; margin-bottom: 16px; }
-        .sp-desc { font-size: 16px; color: var(--ink-60); line-height: 1.7; margin-bottom: 20px; }
+        .sp-desc { font-size: 15px; color: var(--ink-60); line-height: 1.75; margin-bottom: 20px; white-space: pre-line; }
+        .sp-desc-block { background: var(--paper); border: 1px solid var(--rule); border-radius: 2px; padding: 20px 24px; margin-bottom: 20px; }
+        .sp-desc-block p { font-size: 15px; color: var(--ink-60); line-height: 1.75; margin-bottom: 14px; }
+        .sp-desc-block p:last-child { margin-bottom: 0; }
+        .sp-desc-block p strong { color: var(--ink); }
+        .sp-desc-section { margin-bottom: 16px; }
+        .sp-desc-section-ttl { font-family: 'Playfair Display', serif; font-size: 15px; font-weight: 700; color: var(--bord); margin-bottom: 8px; letter-spacing: 0.01em; }
+        .sp-desc-list { list-style: none; padding: 0; margin: 0 0 14px; display: flex; flex-direction: column; gap: 5px; }
+        .sp-desc-list li { font-size: 14px; color: var(--ink-60); line-height: 1.6; padding-left: 16px; position: relative; }
+        .sp-desc-list li::before { content: "•"; position: absolute; left: 0; color: var(--bord); font-weight: 700; }
         .sp-sev-box { border-radius: 2px; padding: 12px 16px; font-size: 13px; font-weight: 600; line-height: 1.5; }
 
         /* SIDEBAR */
@@ -208,7 +247,7 @@ export default async function SymptomPage({ params }: Props) {
             <div>
               <div className="sp-sys-badge">{sys.icon} {sys.label}</div>
               <h1 className="sp-title">{symptom.title}</h1>
-              {symptom.description && <p className="sp-desc">{symptom.description}</p>}
+              {symptom.description && <SymptomDescription text={symptom.description} />}
               <div className="sp-sev-box" style={{ background: sev.bg, color: sev.color }}>
                 {sev.label}
               </div>
