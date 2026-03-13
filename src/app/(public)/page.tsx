@@ -369,6 +369,15 @@ export default async function HomePage({ searchParams }: { searchParams: Promise
               <Link href="/symptoms" className="zh-symptoms-promo-btn">Перейти к симптомам →</Link>
             </div>
 
+            <div className="zh-symptoms-promo" style={{ background: 'linear-gradient(135deg, #1C3A5E 0%, #2D6EA0 100%)', marginBottom: 40 }}>
+              <div className="zh-symptoms-promo-left">
+                <div className="zh-symptoms-promo-ico">🩺</div>
+                <div className="zh-symptoms-promo-ttl">Медицинские калькуляторы</div>
+                <div className="zh-symptoms-promo-sub">ИМТ, идеальный вес, норма калорий, воды и пульсовые зоны — всё в одном месте</div>
+              </div>
+              <Link href="/calculators" className="zh-symptoms-promo-btn">Открыть калькуляторы →</Link>
+            </div>
+
             {categories.length > 0 && (
               <section className="zh-specs-wrap">
                 <div className="zh-sec-hdr">
@@ -473,6 +482,7 @@ export default async function HomePage({ searchParams }: { searchParams: Promise
               <div className="zh-foot-lnks">
                 <Link href="/privacy">Конфиденциальность</Link>
                 <Link href="/contacts">Контакты</Link>
+                <Link href="/calculators">Калькуляторы</Link>
                 <Link href="/admin">Для авторов</Link>
               </div>
             </div>
