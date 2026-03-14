@@ -675,7 +675,8 @@ export default function DecodePage() {
           <Link href="/" className="dc-foot-logo">Здрав<span>Инфо</span></Link>
           <div className="dc-foot-lnks">
             <Link href="/tests">Справочник анализов</Link>
-            <Link href="/calculators">Калькуляторы</Link>
+            <Link href="/calculators/lab">Калькуляторы анализов</Link>
+            <Link href="/calculators">Все калькуляторы</Link>
             <Link href="/symptoms">Симптомы</Link>
           </div>
           <div className="dc-foot-copy">© {new Date().getFullYear()} ЗдравИнфо. Информация носит образовательный характер.</div>

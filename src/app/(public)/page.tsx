@@ -379,7 +379,7 @@ export default async function HomePage({ searchParams }: { searchParams: Promise
               <div className="zh-symptoms-promo-left">
                 <div className="zh-symptoms-promo-ico">🩺</div>
                 <div className="zh-symptoms-promo-ttl">Медицинские калькуляторы</div>
-                <div className="zh-symptoms-promo-sub">ИМТ, идеальный вес, норма калорий, воды и пульсовые зоны — всё в одном месте</div>
+                <div className="zh-symptoms-promo-sub">ИМТ, идеальный вес, калории, вода, пульс и калькуляторы анализов (СКФ, HOMA-IR)</div>
               </div>
               <Link href="/calculators" className="zh-symptoms-promo-btn">Открыть калькуляторы →</Link>
             </div>

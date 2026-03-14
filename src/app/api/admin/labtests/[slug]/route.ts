@@ -35,14 +35,18 @@ export async function PUT(req: NextRequest, { params }: Props) {
       }
     })
 
-    // Обновить связанные статьи
+    // Обновить связанные статьи — один findMany вместо цикла (connection_limit=1)
     if (Array.isArray(articleSlugs)) {
       await prisma.labTestArticle.deleteMany({ where: { labTestId: test.id } })
-      for (const aSlug of articleSlugs) {
-        const article = await prisma.article.findUnique({ where: { slug: aSlug } })
-        if (article) {
-          await prisma.labTestArticle.create({ data: { labTestId: test.id, articleId: article.id } })
-        }
+      const articles = await prisma.article.findMany({
+        where: { slug: { in: articleSlugs } },
+        select: { id: true },
+      })
+      if (articles.length > 0) {
+        await prisma.labTestArticle.createMany({
+          data: articles.map((a: { id: string }) => ({ labTestId: test.id, articleId: a.id })),
+          skipDuplicates: true,
+        })
       }
     }
     return NextResponse.json({ data: test })

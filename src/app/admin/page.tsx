@@ -10,7 +10,7 @@ import { Separator } from '@/components/ui/separator'
 import {
   FileText, Eye, TrendingUp, PenSquare,
   Plus, Search, ExternalLink, LogOut,
-  Pencil, Trash2, Stethoscope, Activity
+  Pencil, Trash2, Stethoscope, Activity, FlaskConical
 } from 'lucide-react'
 
 interface Article {
@@ -105,13 +105,20 @@ export default function AdminDashboard() {
               Статьи
             </Link>
           </nav>
-          <nav className="px-3 py-1 pb-2">
+          <nav className="px-3 py-1 pb-2 space-y-1">
             <Link
               href="/admin/symptoms"
               className="flex items-center gap-3 rounded-md px-3 py-2 text-sm font-medium text-muted-foreground hover:bg-accent hover:text-accent-foreground transition-colors"
             >
               <Activity className="h-4 w-4" />
               Симптомы
+            </Link>
+            <Link
+              href="/admin/labtests"
+              className="flex items-center gap-3 rounded-md px-3 py-2 text-sm font-medium text-muted-foreground hover:bg-accent hover:text-accent-foreground transition-colors"
+            >
+              <FlaskConical className="h-4 w-4" />
+              Анализы
             </Link>
           </nav>
 

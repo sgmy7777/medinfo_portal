@@ -8,8 +8,7 @@ import { Input } from '@/components/ui/input'
 import { Card, CardContent } from '@/components/ui/card'
 import {
   FileText, ExternalLink, LogOut, Activity,
-  Plus, Pencil, Trash2, Search
-} from 'lucide-react'
+  Plus, Pencil, Trash2, Search, FlaskConical} from 'lucide-react'
 
 const SYSTEMS: Record<string, string> = {
   head: 'Голова и шея', chest: 'Грудная клетка', abdomen: 'Живот',
@@ -88,6 +87,13 @@ export default function AdminSymptomsPage() {
             <Link href="/admin/symptoms" className="flex items-center gap-3 rounded-md px-3 py-2 text-sm font-medium bg-accent text-accent-foreground">
               <Activity className="h-4 w-4" />
               Симптомы
+            </Link>
+            <Link
+              href="/admin/labtests"
+              className="flex items-center gap-3 rounded-md px-3 py-2 text-sm font-medium text-muted-foreground hover:bg-accent hover:text-accent-foreground transition-colors"
+            >
+              <FlaskConical className="h-4 w-4" />
+              Анализы
             </Link>
           </nav>
 

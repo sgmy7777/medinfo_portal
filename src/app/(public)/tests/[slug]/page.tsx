@@ -355,9 +355,10 @@ export default async function TestPage({ params }: Props) {
                 <div className="tt-side-ttl">🔍 Разделы</div>
                 <ul className="tt-side-list">
                   {[
+                    { href: '/tests/decode', label: '🔬 Расшифровать анализы' },
+                    { href: '/calculators/lab', label: '🧪 Калькуляторы анализов' },
                     { href: '/tests', label: 'Все анализы' },
                     { href: '/symptoms', label: 'Справочник симптомов' },
-                    { href: '/calculators', label: 'Калькуляторы' },
                     { href: '/contacts', label: 'Задать вопрос' },
                   ].map(l => (
                     <li key={l.href} className="tt-side-item">

@@ -147,7 +147,7 @@ export default async function TestsPage() {
         <h1 className="ts-hero-ttl">Справочник анализов</h1>
         <p className="ts-hero-sub">Нормы показателей, расшифровка отклонений и подготовка к сдаче — для каждого анализа</p>
         <div className="ts-disclaimer">⚠️ Расшифровка носит ознакомительный характер. Интерпретировать результаты и назначать лечение должен только врач.</div>
-        <Link href="/tests/decode" className="ts-decode-btn">🔬 Расшифровать мои анализы →</Link>
+        <div style={{ display: "flex", gap: 10, flexWrap: "wrap", marginTop: 16 }}><Link href="/tests/decode" className="ts-decode-btn">🔬 Расшифровать мои анализы →</Link><Link href="/calculators/lab" className="ts-decode-btn" style={{ background: "white", borderColor: "white", color: "var(--bord)" }}>🧪 Калькуляторы анализов →</Link></div>
       </div>
 
       <div className="ts-body">
