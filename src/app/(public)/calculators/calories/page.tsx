@@ -130,6 +130,13 @@ export default function CaloriesCalculator() {
         .cl-info { background: white; border: 1px solid var(--rule); border-radius: 2px; padding: 24px 28px; }
         .cl-info-ttl { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 700; margin-bottom: 14px; }
         .cl-info-p { font-size: 14px; color: var(--ink-60); line-height: 1.7; margin-bottom: 10px; }
+        .cl-ad-box { background: white; border: 1px solid var(--rule); padding: 14px; margin-bottom: 24px; }
+        .cl-ad-label { font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-30); margin-bottom: 8px; }
+        .cl-ad-slot { min-height: 250px; background: var(--paper-d); display: flex; align-items: center; justify-content: center; font-size: 12px; color: var(--ink-30); text-align: center; padding: 16px; }
+        .cl-ad-under { background: white; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); padding: 20px 0; }
+        .cl-ad-under-in { max-width: 800px; margin: 0 auto; padding: 0 24px; }
+        .cl-ad-under-slot { min-height: 90px; background: var(--paper-d); display: flex; align-items: center; justify-content: center; font-size: 12px; color: var(--ink-30); text-align: center; }
+
         .cl-foot { background: var(--ink); color: rgba(255,255,255,0.65); padding: 24px 0 18px; }
         .cl-foot-in { max-width: 800px; margin: 0 auto; padding: 0 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
         .cl-foot-logo { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 900; color: white; text-decoration: none; }
@@ -247,12 +254,31 @@ export default function CaloriesCalculator() {
             </div>
           )}
 
+
+          <div className="cl-ad-box">
+            <div className="cl-ad-label">Реклама</div>
+            <div id="yandex_rtb_calc_calories_1" className="cl-ad-slot">Реклама РСЯ — блок 1</div>
+          </div>
+
           <div className="cl-info">
             <div className="cl-info-ttl">О формуле Миффлина–Сан-Жеора</div>
             <p className="cl-info-p">Формула разработана в 1990 году и признана наиболее точной для расчёта базального метаболизма у большинства людей. BMR — это количество калорий, необходимых для поддержания жизнедеятельности в состоянии полного покоя.</p>
             <p className="cl-info-p">TDEE (Total Daily Energy Expenditure) — суточная норма с учётом физической активности. Умножение BMR на коэффициент активности даёт оценку реальных энергозатрат.</p>
             <p className="cl-info-p" style={{ marginBottom: 0 }}>Безопасный дефицит для похудения — 300–500 ккал от TDEE. Не рекомендуется снижать потребление ниже 1200 ккал (женщины) и 1500 ккал (мужчины) без наблюдения врача.</p>
           </div>
+
+          <div className="cl-ad-box">
+            <div className="cl-ad-label">Реклама</div>
+            <div id="yandex_rtb_calc_calories_2" className="cl-ad-slot">Реклама РСЯ — блок 2</div>
+          </div>
+
+        </div>
+      </div>
+
+      <div className="cl-ad-under">
+        <div className="cl-ad-under-in">
+          <div className="cl-ad-label">Реклама</div>
+          <div id="yandex_rtb_calc_calories_under" className="cl-ad-under-slot">Реклама под калькулятором (горизонтальный баннер РСЯ 728×90)</div>
         </div>
       </div>
 

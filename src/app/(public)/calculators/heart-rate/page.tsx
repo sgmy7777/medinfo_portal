@@ -161,6 +161,13 @@ export default function HeartRateCalculator() {
         .hr-info { background: white; border: 1px solid var(--rule); border-radius: 2px; padding: 24px 28px; }
         .hr-info-ttl { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 700; margin-bottom: 14px; }
         .hr-info-p { font-size: 14px; color: var(--ink-60); line-height: 1.7; margin-bottom: 10px; }
+        .hr-ad-box { background: white; border: 1px solid var(--rule); padding: 14px; margin-bottom: 24px; }
+        .hr-ad-label { font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-30); margin-bottom: 8px; }
+        .hr-ad-slot { min-height: 250px; background: var(--paper-d); display: flex; align-items: center; justify-content: center; font-size: 12px; color: var(--ink-30); text-align: center; padding: 16px; }
+        .hr-ad-under { background: white; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); padding: 20px 0; }
+        .hr-ad-under-in { max-width: 800px; margin: 0 auto; padding: 0 24px; }
+        .hr-ad-under-slot { min-height: 90px; background: var(--paper-d); display: flex; align-items: center; justify-content: center; font-size: 12px; color: var(--ink-30); text-align: center; }
+
         .hr-foot { background: var(--ink); color: rgba(255,255,255,0.65); padding: 24px 0 18px; }
         .hr-foot-in { max-width: 800px; margin: 0 auto; padding: 0 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
         .hr-foot-logo { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 900; color: white; text-decoration: none; }
@@ -256,12 +263,31 @@ export default function HeartRateCalculator() {
             </div>
           )}
 
+
+          <div className="hr-ad-box">
+            <div className="hr-ad-label">Реклама</div>
+            <div id="yandex_rtb_calc_heart_rate_1" className="hr-ad-slot">Реклама РСЯ — блок 1</div>
+          </div>
+
           <div className="hr-info">
             <div className="hr-info-ttl">Как использовать пульсовые зоны?</div>
             <p className="hr-info-p">Тренировки в зоне 2 (60–70% от ЧСС макс.) наиболее эффективны для сжигания жира — в этой зоне мышцы используют жиры как основной источник энергии. Кардиотренажёры часто ошибочно называют её «зоной сжигания жира».</p>
             <p className="hr-info-p">Зона 3 (70–80%) развивает общую выносливость и объём сердца. Это «рабочая» зона для большинства любительских тренировок.</p>
             <p className="hr-info-p" style={{ marginBottom: 0 }}>Зоны 4 и 5 — интервальные тренировки. Они эффективны для повышения результатов, но требуют достаточного восстановления. Людям с заболеваниями сердца перед началом тренировок в высоких зонах необходима консультация кардиолога.</p>
           </div>
+
+          <div className="hr-ad-box">
+            <div className="hr-ad-label">Реклама</div>
+            <div id="yandex_rtb_calc_heart_rate_2" className="hr-ad-slot">Реклама РСЯ — блок 2</div>
+          </div>
+
+        </div>
+      </div>
+
+      <div className="hr-ad-under">
+        <div className="hr-ad-under-in">
+          <div className="hr-ad-label">Реклама</div>
+          <div id="yandex_rtb_calc_heart_rate_under" className="hr-ad-under-slot">Реклама под калькулятором (горизонтальный баннер РСЯ 728×90)</div>
         </div>
       </div>
 

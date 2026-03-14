@@ -143,6 +143,13 @@ export default function BMICalculator() {
 
         .bm-reset { font-size: 13px; color: var(--bord); background: none; border: none; cursor: pointer; padding: 0; text-decoration: underline; margin-top: 16px; }
 
+        .bm-ad-box { background: white; border: 1px solid var(--rule); padding: 14px; margin-bottom: 24px; }
+        .bm-ad-label { font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-30); margin-bottom: 8px; }
+        .bm-ad-slot { min-height: 250px; background: var(--paper-d); display: flex; align-items: center; justify-content: center; font-size: 12px; color: var(--ink-30); text-align: center; padding: 16px; }
+        .bm-ad-under { background: white; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); padding: 20px 0; }
+        .bm-ad-under-in { max-width: 800px; margin: 0 auto; padding: 0 24px; }
+        .bm-ad-under-slot { min-height: 90px; background: var(--paper-d); display: flex; align-items: center; justify-content: center; font-size: 12px; color: var(--ink-30); text-align: center; }
+
         .bm-info { background: white; border: 1px solid var(--rule); border-radius: 2px; padding: 24px 28px; }
         .bm-info-ttl { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 700; margin-bottom: 14px; }
         .bm-info-p { font-size: 14px; color: var(--ink-60); line-height: 1.7; margin-bottom: 10px; }
@@ -293,6 +300,11 @@ export default function BMICalculator() {
             </div>
           )}
 
+          <div className="bm-ad-box">
+            <div className="bm-ad-label">Реклама</div>
+            <div id="yandex_rtb_calc_bmi_1" className="bm-ad-slot">Реклама РСЯ — блок 1</div>
+          </div>
+
           <div className="bm-info">
             <div className="bm-info-ttl">Что такое ИМТ?</div>
             <p className="bm-info-p">Индекс массы тела (ИМТ) — показатель, рекомендованный ВОЗ для оценки соответствия веса росту. Рассчитывается по формуле: <strong>ИМТ = вес (кг) / рост² (м)</strong>.</p>
@@ -300,6 +312,18 @@ export default function BMICalculator() {
             <p className="bm-info-p" style={{ marginBottom: 0 }}>Для более точной оценки состава тела используйте дополнительные методы: измерение окружности талии, биоимпедансный анализ или консультацию с врачом.</p>
           </div>
 
+          <div style={{ marginTop: 24 }} className="bm-ad-box">
+            <div className="bm-ad-label">Реклама</div>
+            <div id="yandex_rtb_calc_bmi_2" className="bm-ad-slot">Реклама РСЯ — блок 2</div>
+          </div>
+
+        </div>
+      </div>
+
+      <div className="bm-ad-under">
+        <div className="bm-ad-under-in">
+          <div className="bm-ad-label">Реклама</div>
+          <div id="yandex_rtb_calc_bmi_under" className="bm-ad-under-slot">Реклама под калькулятором (горизонтальный баннер РСЯ 728×90)</div>
         </div>
       </div>
 

@@ -127,6 +127,13 @@ export default function IdealWeightCalculator() {
         .iw-info { background: white; border: 1px solid var(--rule); border-radius: 2px; padding: 24px 28px; }
         .iw-info-ttl { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 700; margin-bottom: 14px; }
         .iw-info-p { font-size: 14px; color: var(--ink-60); line-height: 1.7; margin-bottom: 10px; }
+        .iw-ad-box { background: white; border: 1px solid var(--rule); padding: 14px; margin-bottom: 24px; }
+        .iw-ad-label { font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-30); margin-bottom: 8px; }
+        .iw-ad-slot { min-height: 250px; background: var(--paper-d); display: flex; align-items: center; justify-content: center; font-size: 12px; color: var(--ink-30); text-align: center; padding: 16px; }
+        .iw-ad-under { background: white; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); padding: 20px 0; }
+        .iw-ad-under-in { max-width: 800px; margin: 0 auto; padding: 0 24px; }
+        .iw-ad-under-slot { min-height: 90px; background: var(--paper-d); display: flex; align-items: center; justify-content: center; font-size: 12px; color: var(--ink-30); text-align: center; }
+
         .iw-foot { background: var(--ink); color: rgba(255,255,255,0.65); padding: 24px 0 18px; }
         .iw-foot-in { max-width: 800px; margin: 0 auto; padding: 0 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
         .iw-foot-logo { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 900; color: white; text-decoration: none; }
@@ -207,12 +214,31 @@ export default function IdealWeightCalculator() {
             </div>
           )}
 
+
+          <div className="iw-ad-box">
+            <div className="iw-ad-label">Реклама</div>
+            <div id="yandex_rtb_calc_ideal_weight_1" className="iw-ad-slot">Реклама РСЯ — блок 1</div>
+          </div>
+
           <div className="iw-info">
             <div className="iw-info-ttl">Почему формулы дают разные результаты?</div>
             <p className="iw-info-p">Каждая формула разрабатывалась в разные эпохи, на разных популяциях и с разными целями. Поэтому результаты закономерно различаются на 2–5 кг.</p>
             <p className="iw-info-p">Среднее значение — хороший ориентир, но помните: понятие «идеального веса» условно. Оно не учитывает мышечную массу, тип телосложения, возраст и индивидуальные особенности.</p>
             <p className="iw-info-p" style={{ marginBottom: 0 }}>Используйте результат как отправную точку для разговора с врачом или диетологом, а не как жёсткую цель.</p>
           </div>
+
+          <div className="iw-ad-box">
+            <div className="iw-ad-label">Реклама</div>
+            <div id="yandex_rtb_calc_ideal_weight_2" className="iw-ad-slot">Реклама РСЯ — блок 2</div>
+          </div>
+
+        </div>
+      </div>
+
+      <div className="iw-ad-under">
+        <div className="iw-ad-under-in">
+          <div className="iw-ad-label">Реклама</div>
+          <div id="yandex_rtb_calc_ideal_weight_under" className="iw-ad-under-slot">Реклама под калькулятором (горизонтальный баннер РСЯ 728×90)</div>
         </div>
       </div>
 

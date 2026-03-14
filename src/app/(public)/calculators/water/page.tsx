@@ -128,6 +128,13 @@ export default function WaterCalculator() {
         .wt-tips-ttl { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 700; margin-bottom: 14px; }
         .wt-tip { display: flex; gap: 10px; margin-bottom: 12px; font-size: 14px; color: var(--ink-60); line-height: 1.6; }
         .wt-tip-ico { flex-shrink: 0; }
+        .wt-ad-box { background: white; border: 1px solid var(--rule); padding: 14px; margin-bottom: 24px; }
+        .wt-ad-label { font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-30); margin-bottom: 8px; }
+        .wt-ad-slot { min-height: 250px; background: var(--paper-d); display: flex; align-items: center; justify-content: center; font-size: 12px; color: var(--ink-30); text-align: center; padding: 16px; }
+        .wt-ad-under { background: white; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); padding: 20px 0; }
+        .wt-ad-under-in { max-width: 800px; margin: 0 auto; padding: 0 24px; }
+        .wt-ad-under-slot { min-height: 90px; background: var(--paper-d); display: flex; align-items: center; justify-content: center; font-size: 12px; color: var(--ink-30); text-align: center; }
+
         .wt-foot { background: var(--ink); color: rgba(255,255,255,0.65); padding: 24px 0 18px; }
         .wt-foot-in { max-width: 800px; margin: 0 auto; padding: 0 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
         .wt-foot-logo { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 900; color: white; text-decoration: none; }
@@ -253,6 +260,11 @@ export default function WaterCalculator() {
             </div>
           )}
 
+          <div className="wt-ad-box">
+            <div className="wt-ad-label">Реклама</div>
+            <div id="yandex_rtb_calc_water_1" className="wt-ad-slot">Реклама РСЯ — блок 1</div>
+          </div>
+
           <div className="wt-tips">
             <div className="wt-tips-ttl">Советы по гидратации</div>
             {[
@@ -268,6 +280,19 @@ export default function WaterCalculator() {
               </div>
             ))}
           </div>
+
+          <div className="wt-ad-box">
+            <div className="wt-ad-label">Реклама</div>
+            <div id="yandex_rtb_calc_water_2" className="wt-ad-slot">Реклама РСЯ — блок 2</div>
+          </div>
+
+        </div>
+      </div>
+
+      <div className="wt-ad-under">
+        <div className="wt-ad-under-in">
+          <div className="wt-ad-label">Реклама</div>
+          <div id="yandex_rtb_calc_water_under" className="wt-ad-under-slot">Реклама под калькулятором (горизонтальный баннер РСЯ 728×90)</div>
         </div>
       </div>
 

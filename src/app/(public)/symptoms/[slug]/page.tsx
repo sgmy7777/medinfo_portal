@@ -199,9 +199,20 @@ export default async function SymptomPage({ params }: Props) {
         .sp-foot-lnks a:hover { color: var(--acc); }
         .sp-foot-copy { font-size: 11px; color: rgba(255,255,255,0.35); width: 100%; text-align: center; margin-top: 8px; padding-top: 12px; border-top: 1px solid rgba(255,255,255,0.06); }
 
+        /* AD BLOCKS */
+        .sp-ad-box { background: white; border: 1px solid var(--rule); padding: 14px; }
+        .sp-ad-label { font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-30); margin-bottom: 8px; }
+        .sp-ad-slot { min-height: 250px; background: var(--paper-d); display: flex; align-items: center; justify-content: center; font-size: 12px; color: var(--ink-30); text-align: center; padding: 16px; }
+        .sp-ad-incontent { margin: 28px 0; padding: 14px; background: white; border: 1px solid var(--rule); border-top: 2px solid var(--bord); }
+        .sp-ad-incontent-slot { min-height: 180px; background: var(--paper-d); display: flex; align-items: center; justify-content: center; font-size: 12px; color: var(--ink-30); text-align: center; padding: 16px; }
+        .sp-ad-under { background: white; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); padding: 20px 0; }
+        .sp-ad-under-in { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+        .sp-ad-under-slot { min-height: 90px; background: var(--paper-d); display: flex; align-items: center; justify-content: center; font-size: 12px; color: var(--ink-30); text-align: center; }
+
         @media (max-width: 900px) {
           .sp-hero-in { grid-template-columns: 1fr; gap: 24px; }
           .sp-side { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+          .sp-ad-slot { min-height: 160px; }
         }
         @media (max-width: 600px) {
           .sp-title { font-size: 28px; }
@@ -210,6 +221,8 @@ export default async function SymptomPage({ params }: Props) {
           .sp-art-img { height: 90px; }
           .sp-side { grid-template-columns: 1fr; }
           .sp-hero { padding: 28px 14px 24px; }
+          .sp-ad-under-slot { min-height: 60px; font-size: 11px; }
+          .sp-ad-under-in { padding: 0 14px; }
         }
       `}</style>
 
@@ -285,6 +298,16 @@ export default async function SymptomPage({ params }: Props) {
                   ))}
                 </ul>
               </div>
+
+              <div className="sp-ad-box">
+                <div className="sp-ad-label">Реклама</div>
+                <div id="yandex_rtb_symptom_sidebar_1" className="sp-ad-slot">Реклама РСЯ — блок 1</div>
+              </div>
+
+              <div className="sp-ad-box">
+                <div className="sp-ad-label">Реклама</div>
+                <div id="yandex_rtb_symptom_sidebar_2" className="sp-ad-slot">Реклама РСЯ — блок 2</div>
+              </div>
             </div>
           </div>
         </div>
@@ -316,10 +339,22 @@ export default async function SymptomPage({ params }: Props) {
                   </Link>
                 ))}
               </div>
+
+              <div className="sp-ad-incontent">
+                <div className="sp-ad-label">Реклама</div>
+                <div id="yandex_rtb_symptom_incontent" className="sp-ad-incontent-slot">Реклама внутри страницы симптома (РСЯ)</div>
+              </div>
             </>
           ) : (
             <div className="sp-empty">Статьи по этому симптому скоро появятся</div>
           )}
+        </div>
+      </div>
+
+      <div className="sp-ad-under">
+        <div className="sp-ad-under-in">
+          <div className="sp-ad-label">Реклама</div>
+          <div id="yandex_rtb_symptom_under" className="sp-ad-under-slot">Реклама под страницей симптома (горизонтальный баннер РСЯ 728×90)</div>
         </div>
       </div>
 
