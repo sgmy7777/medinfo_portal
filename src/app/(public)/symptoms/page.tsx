@@ -27,13 +27,14 @@ const SEVERITY: Record<string, { label: string; color: string }> = {
 
 async function getData() {
   try {
-    const [symptoms, categories] = await Promise.all([
-      prisma.symptom.findMany({
-        orderBy: [{ bodySystem: 'asc' }, { title: 'asc' }],
-        include: { articles: true },
-      }),
-      prisma.category.findMany({ orderBy: { title: 'asc' }, select: { id: true, title: true, slug: true } }),
-    ])
+    const symptoms = await prisma.symptom.findMany({
+      orderBy: [{ bodySystem: 'asc' }, { title: 'asc' }],
+      include: { articles: true },
+    })
+    const categories = await prisma.category.findMany({
+      orderBy: { title: 'asc' },
+      select: { id: true, title: true, slug: true },
+    })
     return { symptoms, categories }
   } catch { return { symptoms: [], categories: [] } }
 }

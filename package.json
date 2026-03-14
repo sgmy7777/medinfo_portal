@@ -13,7 +13,8 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
-    "db:seed:articles": "ts-node --compiler-options '{\"module\":\"CommonJS\"}' prisma/seed-articles.ts"
+    "db:seed:articles": "ts-node --compiler-options '{\"module\":\"CommonJS\"}' prisma/seed-articles.ts",
+    "db:seed:labtests": "ts-node --compiler-options '{\"module\":\"CommonJS\"}' prisma/seed-labtests.ts"
   },
   "dependencies": {
     "@prisma/client": "^6.6.0",

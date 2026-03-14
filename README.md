@@ -231,6 +231,7 @@ export default function RootLayout({ children }) {
 | `npm run start` | Запуск продакшн-сервера |
 | `npm run db:push` | Применить схему Prisma к БД |
 | `npm run db:seed` | Заполнить БД начальными данными |
+| `npm run db:seed:labtests` | Заполнить справочник анализов (33 показателя) |
 | `npm run db:studio` | Открыть Prisma Studio (GUI для БД) |
 
 ---

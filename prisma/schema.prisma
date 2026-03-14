@@ -55,6 +55,7 @@ model Article {
   category        Category  @relation(fields: [categoryId], references: [id])
   tags            ArticleTag[]
   symptoms        SymptomArticle[]
+  labTests        LabTestArticle[]
   isPublished     Boolean   @default(false)
   publishedAt     DateTime?
   createdAt       DateTime  @default(now())
@@ -96,6 +97,33 @@ model SymptomArticle {
   article   Article @relation(fields: [articleId], references: [id], onDelete: Cascade)
 
   @@id([symptomId, articleId])
+}
+
+model LabTest {
+  id          String    @id @default(cuid())
+  title       String
+  slug        String    @unique
+  description String?   @db.Text
+  category    String    // 'blood_general', 'blood_biochem', 'hormones', 'urine', 'immune', 'coagulation', 'tumor_markers'
+  unit        String?   // единица измерения, например "г/л", "мкмоль/л"
+  normMale    String?   // норма для мужчин (текст, т.к. диапазон может зависеть от возраста)
+  normFemale  String?   // норма для женщин
+  normGeneral String?   // общая норма (если нет разделения по полу)
+  preparation String?   @db.Text // как подготовиться к сдаче
+  createdAt   DateTime  @default(now())
+
+  articles    LabTestArticle[]
+
+  @@index([category])
+}
+
+model LabTestArticle {
+  labTestId String
+  articleId String
+  labTest   LabTest @relation(fields: [labTestId], references: [id], onDelete: Cascade)
+  article   Article @relation(fields: [articleId], references: [id], onDelete: Cascade)
+
+  @@id([labTestId, articleId])
 }
 
 model AdminUser {

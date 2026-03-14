@@ -47,6 +47,14 @@ const CALCULATORS = [
     tags: ['Кардио', 'Тренировки', 'Сердце'],
     color: '#8B1F2A',
   },
+  {
+    slug: 'lab',
+    icon: '🧪',
+    title: 'Калькуляторы анализов',
+    desc: 'СКФ (функция почек), ЛПНП по Фридевальду, индекс атерогенности, HOMA-IR',
+    tags: ['СКФ', 'LDL', 'HOMA-IR', 'Почки'],
+    color: '#1C3A5E',
+  },
 ]
 
 export default function CalculatorsPage() {

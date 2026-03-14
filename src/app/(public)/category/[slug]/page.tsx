@@ -72,7 +72,9 @@ function formatDate(date: Date | string | null | undefined) {
 
 export default async function CategoryPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params
-  const [category, allCategories] = await Promise.all([getCategory(slug), getAllCategories()])
+  // Последовательные запросы — connection_limit=1
+  const category = await getCategory(slug)
+  const allCategories = await getAllCategories()
   if (!category) notFound()
   const articles = await getCategoryArticles(category.id)
 

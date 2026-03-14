@@ -51,7 +51,10 @@ const catIcons: Record<string, string> = {
 export default async function HomePage({ searchParams }: { searchParams: Promise<{ page?: string }> }) {
   const { page: pageStr } = await searchParams
   const page = Math.max(1, parseInt(pageStr ?? '1') || 1)
-  const [articles, categories, total] = await Promise.all([getArticles(page), getCategories(), getArticlesCount()])
+  // Последовательные запросы — connection_limit=1
+  const articles = await getArticles(page)
+  const categories = await getCategories()
+  const total = await getArticlesCount()
   const totalPages = Math.ceil(total / PAGE_SIZE)
   const [hero, ...rest] = articles as any[]
   const todayStr = new Date().toLocaleDateString('ru-RU', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' })
@@ -288,6 +291,8 @@ export default async function HomePage({ searchParams }: { searchParams: Promise
             <div className="zh-top-in">
               <span className="zh-top-badge">Медицинский информационный портал</span>
               <Link href="/symptoms" className="zh-symptoms-nav-lnk">🌡️ Симптомы</Link>
+              <Link href="/tests" className="zh-symptoms-nav-lnk">🧪 Анализы</Link>
+              <Link href="/calculators" className="zh-symptoms-nav-lnk">⚖️ Калькуляторы</Link>
               <span className="zh-top-date">{todayStr}</span>
             </div>
           </div>
@@ -376,6 +381,15 @@ export default async function HomePage({ searchParams }: { searchParams: Promise
                 <div className="zh-symptoms-promo-sub">ИМТ, идеальный вес, норма калорий, воды и пульсовые зоны — всё в одном месте</div>
               </div>
               <Link href="/calculators" className="zh-symptoms-promo-btn">Открыть калькуляторы →</Link>
+            </div>
+
+            <div className="zh-symptoms-promo" style={{ background: 'linear-gradient(135deg, #1A3A2A 0%, #2D6A4F 100%)', marginBottom: 40 }}>
+              <div className="zh-symptoms-promo-left">
+                <div className="zh-symptoms-promo-ico">🧪</div>
+                <div className="zh-symptoms-promo-ttl">Справочник анализов</div>
+                <div className="zh-symptoms-promo-sub">Нормы и расшифровка — гемоглобин, холестерин, гормоны, коагулограмма и 30+ других показателей</div>
+              </div>
+              <Link href="/tests" className="zh-symptoms-promo-btn" style={{ background: '#2D8A5A' }}>Перейти к анализам →</Link>
             </div>
 
             {categories.length > 0 && (
@@ -482,6 +496,7 @@ export default async function HomePage({ searchParams }: { searchParams: Promise
               <div className="zh-foot-lnks">
                 <Link href="/privacy">Конфиденциальность</Link>
                 <Link href="/contacts">Контакты</Link>
+                <Link href="/tests">Анализы</Link>
                 <Link href="/calculators">Калькуляторы</Link>
                 <Link href="/admin">Для авторов</Link>
               </div>

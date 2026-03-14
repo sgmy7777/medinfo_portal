@@ -34,28 +34,33 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 async function getData(slug: string) {
-  const [symptom, categories, allSymptoms] = await Promise.all([
-    prisma.symptom.findUnique({
-      where: { slug },
-      include: {
-        articles: {
-          include: {
-            article: {
-              select: {
-                id: true, title: true, slug: true, excerpt: true,
-                ogImageUrl: true, viewCount: true, publishedAt: true,
-                isPublished: true,
-                category: { select: { title: true, slug: true } },
-                author: { select: { name: true } },
-              }
+  // Последовательные запросы — connection_limit=1 не позволяет параллельные
+  const symptom = await prisma.symptom.findUnique({
+    where: { slug },
+    include: {
+      articles: {
+        include: {
+          article: {
+            select: {
+              id: true, title: true, slug: true, excerpt: true,
+              ogImageUrl: true, viewCount: true, publishedAt: true,
+              isPublished: true,
+              category: { select: { title: true, slug: true } },
+              author: { select: { name: true } },
             }
           }
         }
       }
-    }),
-    prisma.category.findMany({ orderBy: { title: 'asc' }, select: { id: true, title: true, slug: true } }),
-    prisma.symptom.findMany({ orderBy: [{ bodySystem: 'asc' }, { title: 'asc' }], select: { id: true, title: true, slug: true, bodySystem: true, severity: true } }),
-  ])
+    }
+  })
+  const categories = await prisma.category.findMany({
+    orderBy: { title: 'asc' },
+    select: { id: true, title: true, slug: true },
+  })
+  const allSymptoms = await prisma.symptom.findMany({
+    orderBy: [{ bodySystem: 'asc' }, { title: 'asc' }],
+    select: { id: true, title: true, slug: true, bodySystem: true, severity: true },
+  })
   return { symptom, categories, allSymptoms }
 }
 
