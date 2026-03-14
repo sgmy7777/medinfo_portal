@@ -292,6 +292,7 @@ export default async function HomePage({ searchParams }: { searchParams: Promise
               <span className="zh-top-badge">Медицинский информационный портал</span>
               <Link href="/symptoms" className="zh-symptoms-nav-lnk">🌡️ Симптомы</Link>
               <Link href="/tests" className="zh-symptoms-nav-lnk">🧪 Анализы</Link>
+              <Link href="/tests/decode" className="zh-symptoms-nav-lnk">🔬 Расшифровка</Link>
               <Link href="/calculators" className="zh-symptoms-nav-lnk">⚖️ Калькуляторы</Link>
               <span className="zh-top-date">{todayStr}</span>
             </div>
@@ -389,7 +390,7 @@ export default async function HomePage({ searchParams }: { searchParams: Promise
                 <div className="zh-symptoms-promo-ttl">Справочник анализов</div>
                 <div className="zh-symptoms-promo-sub">Нормы и расшифровка — гемоглобин, холестерин, гормоны, коагулограмма и 30+ других показателей</div>
               </div>
-              <Link href="/tests" className="zh-symptoms-promo-btn" style={{ background: '#2D8A5A' }}>Перейти к анализам →</Link>
+              <div style={{ display: "flex", flexDirection: "column", gap: 8, alignItems: "flex-end" }}><Link href="/tests" className="zh-symptoms-promo-btn" style={{ background: '#2D8A5A' }}>Справочник анализов →</Link><Link href="/tests/decode" className="zh-symptoms-promo-btn" style={{ background: '#1A5C3A', fontSize: 12 }}>🔬 Расшифровать мои анализы →</Link></div>
             </div>
 
             {categories.length > 0 && (
@@ -497,6 +498,7 @@ export default async function HomePage({ searchParams }: { searchParams: Promise
                 <Link href="/privacy">Конфиденциальность</Link>
                 <Link href="/contacts">Контакты</Link>
                 <Link href="/tests">Анализы</Link>
+                <Link href="/tests/decode">Расшифровка</Link>
                 <Link href="/calculators">Калькуляторы</Link>
                 <Link href="/admin">Для авторов</Link>
               </div>

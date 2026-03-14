@@ -73,6 +73,8 @@ export default async function TestsPage() {
         .ts-hero-badge { display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--acc); margin-bottom: 12px; }
         .ts-hero-ttl { font-family: 'Playfair Display', serif; font-size: 44px; font-weight: 900; color: white; margin-bottom: 12px; }
         .ts-hero-sub { font-size: 16px; color: rgba(255,255,255,0.65); max-width: 540px; margin: 0 auto 24px; line-height: 1.6; }
+        .ts-decode-btn { display: inline-flex; align-items: center; gap: 8px; margin-top: 16px; padding: 12px 24px; background: white; color: var(--bord); font-size: 13px; font-weight: 700; text-decoration: none; border: 2px solid rgba(255,255,255,0.3); border-radius: 2px; letter-spacing: 0.05em; transition: all 0.15s; }
+        .ts-decode-btn:hover { background: var(--bord-l); border-color: var(--bord-l); }
         .ts-disclaimer { display: inline-block; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12); border-radius: 2px; padding: 10px 18px; font-size: 12px; color: rgba(255,255,255,0.55); max-width: 560px; line-height: 1.6; }
 
         .ts-body { background: var(--paper); min-height: 60vh; }
@@ -145,6 +147,7 @@ export default async function TestsPage() {
         <h1 className="ts-hero-ttl">Справочник анализов</h1>
         <p className="ts-hero-sub">Нормы показателей, расшифровка отклонений и подготовка к сдаче — для каждого анализа</p>
         <div className="ts-disclaimer">⚠️ Расшифровка носит ознакомительный характер. Интерпретировать результаты и назначать лечение должен только врач.</div>
+        <Link href="/tests/decode" className="ts-decode-btn">🔬 Расшифровать мои анализы →</Link>
       </div>
 
       <div className="ts-body">
