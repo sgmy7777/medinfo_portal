@@ -2,7 +2,6 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
-import { PublicHeader } from '@/components/public-header'
 
 type Unit = 'metric' | 'imperial'
 
@@ -174,7 +173,12 @@ export default function BMICalculator() {
         }
       `}</style>
 
-            <PublicHeader />
+      <header className="bm">
+        <div className="bm-top">Медицинский информационный портал</div>
+        <div className="bm-main">
+          <Link href="/" className="bm-logo">Здрав<span>Инфо</span></Link>
+        </div>
+      </header>
 
       <div className="bm-bread">
         <div className="bm-bread-in">

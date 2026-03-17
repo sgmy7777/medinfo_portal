@@ -2,7 +2,6 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
-import { PublicHeader } from '@/components/public-header'
 
 // ─── Данные анализов с клинической интерпретацией ─────────────────────────────
 const TESTS = [
@@ -552,7 +551,12 @@ export default function DecodePage() {
         }
       `}</style>
 
-            <PublicHeader />
+      <header className="dc">
+        <div className="dc-top">Медицинский информационный портал</div>
+        <div className="dc-main">
+          <Link href="/" className="dc-logo">Здрав<span>Инфо</span></Link>
+        </div>
+      </header>
 
       <div className="dc-bread">
         <div className="dc-bread-in">

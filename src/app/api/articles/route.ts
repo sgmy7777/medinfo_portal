@@ -1,7 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { prisma } from '@/lib/prisma'
 import { requireAuth } from '@/lib/auth'
-import { sanitizeRichTextHtml, sanitizeText } from '@/lib/sanitize'
 
 // GET /api/articles — список статей (публичный + фильтры для админки)
 export async function GET(req: NextRequest) {
@@ -68,22 +67,12 @@ export async function POST(req: NextRequest) {
     isPublished,
   } = body
 
-  const safeTitle = sanitizeText(title)
-  const safeSlug = sanitizeText(slug)
-  const safeContent = sanitizeRichTextHtml(content)
-  const safeExcerpt = sanitizeText(excerpt)
-  const safeMetaTitle = sanitizeText(metaTitle)
-  const safeMetaDescription = sanitizeText(metaDescription)
-  const safeOgImageUrl = sanitizeText(ogImageUrl)
-  const safeAuthorId = sanitizeText(authorId)
-  const safeCategoryId = sanitizeText(categoryId)
-
   const missing: string[] = []
-  if (!safeTitle) missing.push('заголовок')
-  if (!safeSlug) missing.push('slug')
-  if (!safeContent) missing.push('содержание')
-  if (!safeAuthorId) missing.push('автор')
-  if (!safeCategoryId) missing.push('категория')
+  if (!title) missing.push('заголовок')
+  if (!slug) missing.push('slug')
+  if (!content) missing.push('содержание')
+  if (!authorId) missing.push('автор')
+  if (!categoryId) missing.push('категория')
 
   if (missing.length > 0) {
     console.error('[POST /api/articles] Missing:', missing, '| body keys:', Object.keys(body))
@@ -91,22 +80,22 @@ export async function POST(req: NextRequest) {
   }
 
   // Проверка уникальности slug
-  const existing = await prisma.article.findUnique({ where: { slug: safeSlug } })
+  const existing = await prisma.article.findUnique({ where: { slug } })
   if (existing) {
     return NextResponse.json({ error: 'Статья с таким slug уже существует' }, { status: 400 })
   }
 
   const article = await prisma.article.create({
     data: {
-      title: safeTitle,
-      slug: safeSlug,
-      content: safeContent,
-      excerpt: safeExcerpt || null,
-      metaTitle: safeMetaTitle || null,
-      metaDescription: safeMetaDescription || null,
-      ogImageUrl: safeOgImageUrl || null,
-      authorId: safeAuthorId,
-      categoryId: safeCategoryId,
+      title,
+      slug,
+      content,
+      excerpt,
+      metaTitle,
+      metaDescription,
+      ogImageUrl,
+      authorId,
+      categoryId,
       isPublished: isPublished ?? false,
       publishedAt: isPublished ? new Date() : null,
       tags: tagIds?.length

@@ -1,7 +1,6 @@
 import { notFound } from 'next/navigation'
 import { Metadata } from 'next'
 import Link from 'next/link'
-import { PublicHeader } from '@/components/public-header'
 import { prisma } from '@/lib/prisma'
 
 type Props = { params: Promise<{ slug: string }> }
@@ -70,16 +69,6 @@ function formatDate(d: Date | string | null | undefined) {
   return new Date(d).toLocaleDateString('ru-RU', { day: 'numeric', month: 'long', year: 'numeric' })
 }
 
-
-function escapeHtml(value: string): string {
-  return value
-    .replaceAll('&', '&amp;')
-    .replaceAll('<', '&lt;')
-    .replaceAll('>', '&gt;')
-    .replaceAll('"', '&quot;')
-    .replaceAll("'", '&#39;')
-}
-
 function SymptomDescription({ text }: { text: string }) {
   // Разбиваем на секции по заголовкам (строки КАПСОМ с двоеточием)
   const sections = text.split(/\n(?=[А-ЯA-Z][А-ЯA-Z\s«»()\/–-]+:)/u)
@@ -100,8 +89,7 @@ function SymptomDescription({ text }: { text: string }) {
                 const isBullet = line.startsWith('•')
                 const text = isBullet ? line.substring(1).trim() : line
                 if (!isBullet) return <p key={j} style={{fontSize:14, color:'var(--ink-60)', lineHeight:1.65, marginBottom:6}}>{text}</p>
-                const safeText = escapeHtml(text)
-                return <li key={j} dangerouslySetInnerHTML={{__html: safeText.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>').replace(/^([^—]+—)/, '<strong>$1</strong>')}} />
+                return <li key={j} dangerouslySetInnerHTML={{__html: text.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>').replace(/^([^—]+—)/, '<strong>$1</strong>')}} />
               })}
             </ul>
           </div>
@@ -243,7 +231,12 @@ export default async function SymptomPage({ params }: Props) {
         }
       `}</style>
 
-            <PublicHeader />
+      <header className="sp">
+        <div className="sp-top">Медицинский информационный портал</div>
+        <div className="sp-main">
+          <Link href="/" className="sp-logo">Здрав<span>Инфо</span></Link>
+        </div>
+      </header>
 
       <div className="sp-cats">
         <div className="sp-cats-in">
