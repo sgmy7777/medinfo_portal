@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import { PublicHeader } from '@/components/public-header'
 
 const ACTIVITY_LEVELS = [
   { key: 'sedentary',  label: 'Малоподвижный', desc: 'Офисная работа, почти нет тренировок', factor: 1.2 },
@@ -156,12 +157,7 @@ export default function CaloriesCalculator() {
         }
       `}</style>
 
-      <header className="cl">
-        <div className="cl-top">Медицинский информационный портал</div>
-        <div className="cl-main">
-          <Link href="/" className="cl-logo">Здрав<span>Инфо</span></Link>
-        </div>
-      </header>
+            <PublicHeader />
 
       <div className="cl-bread">
         <div className="cl-bread-in">

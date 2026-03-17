@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import { PublicHeader } from '@/components/public-header'
 
 interface Zone {
   name: string
@@ -187,12 +188,7 @@ export default function HeartRateCalculator() {
         }
       `}</style>
 
-      <header className="hr">
-        <div className="hr-top">Медицинский информационный портал</div>
-        <div className="hr-main">
-          <Link href="/" className="hr-logo">Здрав<span>Инфо</span></Link>
-        </div>
-      </header>
+            <PublicHeader />
 
       <div className="hr-bread">
         <div className="hr-bread-in">
