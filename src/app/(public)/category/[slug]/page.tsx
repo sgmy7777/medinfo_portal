@@ -1,6 +1,7 @@
 import { notFound } from 'next/navigation'
 import { Metadata } from 'next'
 import Link from 'next/link'
+import { PublicHeader } from '@/components/public-header'
 import { prisma } from '@/lib/prisma'
 
 const catIcons: Record<string, string> = {
@@ -230,19 +231,7 @@ export default async function CategoryPage({ params }: { params: Promise<{ slug:
       <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
 
         {/* HEADER */}
-        <header className="cp-hdr">
-          <div className="cp-hdr-top">
-            <div className="cp-hdr-top-in">
-              <span className="cp-hdr-badge">Медицинский информационный портал</span>
-            </div>
-          </div>
-          <div className="cp-hdr-main">
-            <Link href="/" className="cp-logo">
-              Здрав<span>Инфо</span>
-              <div className="cp-logo-sub">Медицинский портал</div>
-            </Link>
-          </div>
-        </header>
+                <PublicHeader />
 
         {/* CAT BAR */}
         <div className="cp-cats">

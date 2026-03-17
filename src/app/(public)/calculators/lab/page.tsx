@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import { PublicHeader } from '@/components/public-header'
 
 // ─── Типы ──────────────────────────────────────────────────────────────────────
 type CalcId = 'gfr' | 'ldl' | 'ath' | 'homa'
@@ -223,12 +224,7 @@ export default function LabCalculatorsPage() {
         }
       `}</style>
 
-      <header className="lc">
-        <div className="lc-top">Медицинский информационный портал</div>
-        <div className="lc-main">
-          <Link href="/" className="lc-logo">Здрав<span>Инфо</span></Link>
-        </div>
-      </header>
+            <PublicHeader />
 
       <div className="lc-bread">
         <div className="lc-bread-in">
