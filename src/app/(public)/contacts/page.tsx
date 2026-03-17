@@ -2,37 +2,27 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
-import { PublicHeader } from '@/components/public-header'
 
 export default function ContactsPage() {
   const [form, setForm] = useState({ name: '', email: '', message: '' })
   const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle')
-  const [errorMessage, setErrorMessage] = useState('')
 
   async function handleSubmit() {
     if (!form.name || !form.email || !form.message) return
-
     setStatus('sending')
-    setErrorMessage('')
-
     try {
       const res = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(form),
       })
-
       if (res.ok) {
         setStatus('sent')
         setForm({ name: '', email: '', message: '' })
-        return
+      } else {
+        setStatus('error')
       }
-
-      const json = await res.json().catch(() => null)
-      setErrorMessage(json?.error || 'Ошибка отправки')
-      setStatus('error')
     } catch {
-      setErrorMessage('Ошибка сети. Проверьте подключение к интернету и попробуйте снова.')
       setStatus('error')
     }
   }
@@ -132,7 +122,19 @@ export default function ContactsPage() {
 
       <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
 
-                <PublicHeader />
+        <header className="ct-hdr">
+          <div className="ct-hdr-top">
+            <div className="ct-hdr-top-in">
+              <span className="ct-hdr-badge">Медицинский информационный портал</span>
+            </div>
+          </div>
+          <div className="ct-hdr-main">
+            <Link href="/" className="ct-logo">
+              Здрав<span>Инфо</span>
+              <div className="ct-logo-sub">Медицинский портал</div>
+            </Link>
+          </div>
+        </header>
 
         <main style={{ flex: 1 }}>
           <div className="ct-wrap">
@@ -214,12 +216,10 @@ export default function ContactsPage() {
                   <textarea
                     className="ct-textarea"
                     placeholder="Напишите ваш вопрос или предложение..."
-                    minLength={10}
                     value={form.message}
                     onChange={e => setForm(f => ({ ...f, message: e.target.value }))}
                   />
                 </div>
-                <div className="ct-contact-hint">Минимум 10 символов в сообщении.</div>
 
                 <button
                   className="ct-btn"
@@ -236,7 +236,7 @@ export default function ContactsPage() {
                 )}
                 {status === 'error' && (
                   <div className="ct-error">
-                    {errorMessage || 'Ошибка отправки.'} Напишите нам напрямую: sgmy7777@mail.ru
+                    Ошибка отправки. Напишите нам напрямую: sgmy7777@mail.ru
                   </div>
                 )}
               </div>

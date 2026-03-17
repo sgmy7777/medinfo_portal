@@ -10,9 +10,9 @@ export async function GET(req: NextRequest, { params }: RouteContext) {
       where: { slug },
       include: {
         articles: {
-          where: { article: { isPublished: true } },
           include: {
             article: {
+              where: { isPublished: true },
               select: {
                 id: true, title: true, slug: true, excerpt: true,
                 ogImageUrl: true, viewCount: true, publishedAt: true,

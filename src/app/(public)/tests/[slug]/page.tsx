@@ -1,7 +1,6 @@
 import { notFound } from 'next/navigation'
 import { Metadata } from 'next'
 import Link from 'next/link'
-import { PublicHeader } from '@/components/public-header'
 import { prisma } from '@/lib/prisma'
 
 type Props = { params: Promise<{ slug: string }> }
@@ -66,16 +65,6 @@ function formatDate(d: Date | string | null | undefined) {
   return new Date(d).toLocaleDateString('ru-RU', { day: 'numeric', month: 'long', year: 'numeric' })
 }
 
-
-function escapeHtml(value: string): string {
-  return value
-    .replaceAll('&', '&amp;')
-    .replaceAll('<', '&lt;')
-    .replaceAll('>', '&gt;')
-    .replaceAll('"', '&quot;')
-    .replaceAll("'", '&#39;')
-}
-
 function TestDescription({ text }: { text: string }) {
   const sections = text.split(/\n(?=[А-ЯA-Z][А-ЯA-Z\s«»()\/–-]+:)/u)
   return (
@@ -95,8 +84,7 @@ function TestDescription({ text }: { text: string }) {
                 const isBullet = line.startsWith('•')
                 const txt = isBullet ? line.substring(1).trim() : line
                 if (!isBullet) return <p key={j} style={{ fontSize: 14, color: 'var(--ink-60)', lineHeight: 1.65, marginBottom: 6 }}>{txt}</p>
-                const safeText = escapeHtml(txt)
-                return <li key={j} dangerouslySetInnerHTML={{ __html: safeText.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>').replace(/^([^—]+—)/, '<strong>$1</strong>') }} />
+                return <li key={j} dangerouslySetInnerHTML={{ __html: txt.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>').replace(/^([^—]+—)/, '<strong>$1</strong>') }} />
               })}
             </ul>
           </div>
@@ -256,7 +244,12 @@ export default async function TestPage({ params }: Props) {
         }
       `}</style>
 
-            <PublicHeader />
+      <header className="tt">
+        <div className="tt-top">Медицинский информационный портал</div>
+        <div className="tt-main">
+          <Link href="/" className="tt-logo">Здрав<span>Инфо</span></Link>
+        </div>
+      </header>
 
       <div className="tt-cats">
         <div className="tt-cats-in">

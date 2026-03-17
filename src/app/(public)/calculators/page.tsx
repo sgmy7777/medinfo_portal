@@ -1,6 +1,5 @@
 import { Metadata } from 'next'
 import Link from 'next/link'
-import { PublicHeader } from '@/components/public-header'
 
 export const metadata: Metadata = {
   title: 'Медицинские калькуляторы — ЗдравИнфо',
@@ -117,7 +116,12 @@ export default function CalculatorsPage() {
         }
       `}</style>
 
-            <PublicHeader />
+      <header className="ca">
+        <div className="ca-top">Медицинский информационный портал</div>
+        <div className="ca-main">
+          <Link href="/" className="ca-logo">Здрав<span>Инфо</span></Link>
+        </div>
+      </header>
 
       <div className="ca-hero">
         <div className="ca-hero-badge">Онлайн-инструменты</div>

@@ -2,7 +2,6 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
-import { PublicHeader } from '@/components/public-header'
 
 interface Result {
   broca: number
@@ -152,7 +151,12 @@ export default function IdealWeightCalculator() {
         }
       `}</style>
 
-            <PublicHeader />
+      <header className="iw">
+        <div className="iw-top">Медицинский информационный портал</div>
+        <div className="iw-main">
+          <Link href="/" className="iw-logo">Здрав<span>Инфо</span></Link>
+        </div>
+      </header>
 
       <div className="iw-bread">
         <div className="iw-bread-in">
