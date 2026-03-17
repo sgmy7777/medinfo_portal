@@ -23,34 +23,6 @@ import {
 interface Category { id: string; title: string }
 interface Author { id: string; name: string }
 
-type ArticleFormState = {
-  title: string
-  slug: string
-  content: string
-  excerpt: string
-  metaTitle: string
-  metaDescription: string
-  ogImageUrl: string
-  authorId: string
-  categoryId: string
-  isPublished: boolean
-}
-
-function normalizeArticleForm(data?: Partial<ArticleFormState> | null): ArticleFormState {
-  return {
-    title: data?.title ?? '',
-    slug: data?.slug ?? '',
-    content: data?.content ?? '',
-    excerpt: data?.excerpt ?? '',
-    metaTitle: data?.metaTitle ?? '',
-    metaDescription: data?.metaDescription ?? '',
-    ogImageUrl: data?.ogImageUrl ?? '',
-    authorId: data?.authorId ?? '',
-    categoryId: data?.categoryId ?? '',
-    isPublished: data?.isPublished ?? false,
-  }
-}
-
 function slugify(str: string): string {
   return str
     .toLowerCase()
@@ -78,7 +50,18 @@ export default function ArticleEditor() {
   const [saved, setSaved] = useState(false)
   const [saveError, setSaveError] = useState('')
 
-  const [form, setForm] = useState<ArticleFormState>(normalizeArticleForm())
+  const [form, setForm] = useState({
+    title: '',
+    slug: '',
+    content: '',
+    excerpt: '',
+    metaTitle: '',
+    metaDescription: '',
+    ogImageUrl: '',
+    authorId: '',
+    categoryId: '',
+    isPublished: false,
+  })
 
   const charCount = form.metaDescription.length
 
@@ -95,7 +78,7 @@ export default function ArticleEditor() {
       fetch(`/api/articles/${params?.slug}?admin=true`)
         .then(r => r.json())
         .then(json => {
-          if (json.data) setForm(normalizeArticleForm(json.data))
+          if (json.data) setForm({ ...json.data, isPublished: json.data.isPublished })
         })
     }
   }, [])

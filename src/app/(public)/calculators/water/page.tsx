@@ -2,7 +2,6 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
-import { PublicHeader } from '@/components/public-header'
 
 const ACTIVITY = [
   { key: 'low',    label: 'Низкая', desc: 'Менее 30 мин в день', extra: 0 },
@@ -154,7 +153,12 @@ export default function WaterCalculator() {
         }
       `}</style>
 
-            <PublicHeader />
+      <header className="wt">
+        <div className="wt-top">Медицинский информационный портал</div>
+        <div className="wt-main">
+          <Link href="/" className="wt-logo">Здрав<span>Инфо</span></Link>
+        </div>
+      </header>
 
       <div className="wt-bread">
         <div className="wt-bread-in">

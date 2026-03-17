@@ -179,7 +179,7 @@ describe('GET /api/categories', () => {
 
     const { GET } = await import('@/app/api/categories/route')
     const req = makeRequest('GET')
-    const res = await GET()
+    const res = await GET(req as any)
     const json = await res.json()
 
     expect(res.status).toBe(200)
