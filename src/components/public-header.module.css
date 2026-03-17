@@ -1,0 +1,22 @@
+.header { background: var(--bord-d); }
+.top { border-bottom: 1px solid rgba(255,255,255,0.07); padding: 6px 0; }
+.topIn { max-width: 1200px; margin: 0 auto; padding: 0 24px; display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; }
+.topBadge { font-size: 10px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--acc); }
+.navLink { font-size: 11px; color: rgba(255,255,255,0.55); text-decoration: none; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 600; transition: color 0.15s; }
+.navLink:hover { color: var(--acc); }
+.topDate { font-size: 11px; color: rgba(255,255,255,0.3); font-style: italic; }
+.main { max-width: 1200px; margin: 0 auto; padding: 20px 24px 16px; display: flex; align-items: center; justify-content: center; }
+.logo { text-decoration: none; }
+.logoText { font-family: 'Playfair Display', serif; font-size: 46px; font-weight: 900; color: white; letter-spacing: -2px; line-height: 1; text-align: center; }
+.logoText span { color: var(--acc); }
+.logoSub { font-size: 10px; color: rgba(255,255,255,0.3); letter-spacing: 0.22em; text-transform: uppercase; margin-top: 4px; text-align: center; }
+
+@media (max-width: 900px) {
+  .topIn { justify-content: center; }
+}
+
+@media (max-width: 600px) {
+  .main { padding: 14px 16px 12px; }
+  .logoText { font-size: 28px; }
+  .logoSub, .topDate, .navLink { display: none; }
+}

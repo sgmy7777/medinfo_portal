@@ -1,5 +1,6 @@
 import { Metadata } from 'next'
 import Link from 'next/link'
+import { PublicHeader } from '@/components/public-header'
 import { prisma } from '@/lib/prisma'
 
 export const metadata: Metadata = {
@@ -124,12 +125,7 @@ export default async function TestsPage() {
         }
       `}</style>
 
-      <header className="ts">
-        <div className="ts-top">Медицинский информационный портал</div>
-        <div className="ts-main">
-          <Link href="/" className="ts-logo">Здрав<span>Инфо</span></Link>
-        </div>
-      </header>
+            <PublicHeader />
 
       <div className="ts-cats">
         <div className="ts-cats-in">
